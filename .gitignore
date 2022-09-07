@@ -11,6 +11,10 @@
 *.recipe
 *.txt
 *.json
+*.sqlite
+*.db-shm
+*.db-wal
+
 
 # Prerequisites
 *.d
