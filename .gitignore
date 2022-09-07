@@ -1,4 +1,4 @@
-#Add By Me
+# Add By Me
 *.ipch
 *.suo
 *.db
@@ -11,10 +11,9 @@
 *.recipe
 *.txt
 *.json
-*.sqlite
 *.db-shm
 *.db-wal
-
+*.sqlite
 
 # Prerequisites
 *.d
