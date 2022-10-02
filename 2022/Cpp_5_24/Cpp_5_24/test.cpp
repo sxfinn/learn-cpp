@@ -6,6 +6,8 @@ using namespace std;
 int main()
 {
 	string s("hello");
+	s += "world";
+	cout << s << endl;
 	return 0;
 }
 
