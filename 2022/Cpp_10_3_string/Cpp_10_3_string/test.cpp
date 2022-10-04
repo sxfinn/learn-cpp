@@ -1,15 +1,15 @@
 #include"string.h"
 
-void test1()
-{
-	sx::string s1;
-	s1 += "shabi";
-	const sx::string s2("hello");
-	//s1 = s2;
-	//cout << (s1 <= s2) << endl;
-	cout << s2 + 'c';
-	
-}
+//void test1()
+//{
+//	sx::string s1;
+//	s1 += "shabi";
+//	const sx::string s2("hello");
+//	//s1 = s2;
+//	//cout << (s1 <= s2) << endl;
+//	cout << s2 + 'c';
+//	
+//}
 int main()
 {
 	test1();
