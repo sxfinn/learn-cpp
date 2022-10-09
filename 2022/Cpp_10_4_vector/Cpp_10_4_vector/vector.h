@@ -2,8 +2,6 @@
 #include<iostream>
 #include<assert.h>
 using namespace std;
-
-
 namespace sx
 {
 	template<class T>
@@ -12,13 +10,13 @@ namespace sx
 	public:
 		typedef T* iterator;
 		typedef const T* const_iterator;
-		vector()
+		vector<T>()
 			:
 			_start(nullptr),
 			_finish(nullptr),
 			_end(nullptr)
 		{}
-		vector(size_t n, const T& val)
+		vector<T>(int n, const T& val)//第一个参数用size_t会有构造函数参数匹配错误的问题。
 		{
 			while (n--)
 			{
@@ -26,7 +24,7 @@ namespace sx
 			}
 		}
 		template<class Inputinterator>
-		vector(Inputinterator first, Inputinterator last)
+		vector<T>(Inputinterator first, Inputinterator last)
 			:
 			_start(nullptr),
 			_finish(nullptr),
@@ -58,22 +56,27 @@ namespace sx
 		//	_finish = _start + len;
 		//	_end = _finish;
 		//}
-		vector(vector& v)
+		vector<T>(const vector<T>& v)
+			:
+			_start(nullptr),
+			_finish(nullptr),
+			_end(nullptr)
 		{
-			vector tmp(v._start, v._finish);
+			vector<T> tmp(v._start, v._finish);
 			swap(tmp);
 		}
-		void swap(vector& v)
+		void swap(vector<T>& v)
 		{
 			std::swap(_start, v._start);
 			std::swap(_finish, v._finish);
 			std::swap(_end, v._end);
 		}
-		vector& operator=(vector v)
+		vector<T>& operator=(vector<T> v)
 		{
-			swap(*this, v);
+			swap(v);
+			return *this;
 		}
-		~vector()
+		~vector<T>()
 		{
 			if (_start)
 			{
@@ -136,7 +139,7 @@ namespace sx
 			}
 		}
 
-		void resize(size_t n, const T& val = 0)
+		void resize(size_t n, const T& val = T())
 		{
 			if (n <= size())
 			{
@@ -155,7 +158,6 @@ namespace sx
 					*(finish++) = val;
 				}
 			}
-
 		}
 		void push_back(const T& val)
 		{
@@ -167,7 +169,7 @@ namespace sx
 			//*(_finish++) = val;
 			insert(end(), 1, val);
 		}
-		iterator insert(iterator pos, size_t n, const T& val)
+		void insert(iterator pos, size_t n, const T& val)
 		{
 			assert(pos <= _finish && pos >= _start);
 			size_t i = pos - _start;
@@ -188,27 +190,36 @@ namespace sx
 				*(pos++) = val;
 			}
 			_finish = _finish + n;
-			return _start;
+		}
+		iterator insert(iterator pos, const T& val)
+		{
+			size_t i = pos - _start;
+			insert(pos, 1, val);
+			return _start + i;
 		}
 		iterator erase(iterator pos)
 		{
 			assert(pos >= _start && pos < _finish);
+			size_t i = pos - _start;
 			iterator tmp = pos + 1;
 			while (tmp < _finish)
 			{
 				*(tmp - 1) = *tmp;
+				++tmp;
 			}
 			_finish--;
-			return _start;
+			return _start + i;
 		}
 		iterator erase(iterator first, iterator last)
 		{
+			assert(first >= _start && last <= _finish);
+			size_t i = first - _start;
 			while (last < _finish)
 			{
 				*(first++) = *(last++);
 			}
 			_finish = first ;
-			return _start;
+			return _start + i;
 		}
 		void clear()
 		{

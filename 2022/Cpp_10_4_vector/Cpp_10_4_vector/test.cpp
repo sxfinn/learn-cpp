@@ -2,65 +2,122 @@
 #include<string>
 #include<vector>
 #include<list>
-void test3()
-{
-	std::list<int> l1;
-	l1.push_back(1);
-	l1.push_back(2);
-	l1.push_back(3);
-	int arr[] = { 1,23,43,5,345 };
-	sx::vector<int> v1(l1.begin(), l1.end());
-	sx::vector<int> v2;
-	v2.push_back(10);
-	v2.push_back(10);
-	v2.push_back(10);
-	v2.insert(v2.begin(), 2, 9);
-	cout << endl;
-	for (auto e : v2)
-	{
-		cout << e << " ";
-	}
-}
-void test2()
-{
+//void test3()
+//{
+//	std::list<int> l1;
+//	l1.push_back(1);
+//	l1.push_back(2);
+//	l1.push_back(3);
+//	int arr[] = { 1,23,43,5,345 };
+//	sx::vector<int> v1(l1.begin(), l1.end());
+//	sx::vector<int> v2;
+//	v2.push_back(10);
+//	v2.push_back(10);
+//	v2.push_back(10);
+//	v2.insert(v2.begin(), 2, 9);
+//	cout << endl;
+//	for (auto e : v2)
+//	{
+//		cout << e << " ";
+//	}
+//}
+//void test2()
+//{
+//
+//	std::vector<int> v1;
+//	v1.push_back(1);
+//	v1.push_back(1);
+//	v1.push_back(1);
+//	v1.push_back(1);
+//	v1.push_back(1);
+//	v1.push_back(1);
+//	v1.reserve(3);
+//	v1.reserve(4);
+//}
+//void test1()
+//{
+//	sx::vector<string> v1;
+//	v1.push_back("func");
+//	v1.push_back("hello");
+//	v1.push_back("hello");
+//	v1.push_back("hello");
+//	v1.push_back("hello");
+//	v1.push_back("hello");
+//	v1.push_back("hello");
+//	v1.push_back("hello");
+//	v1.push_back("hello");
+//	v1.push_back("hello");
+//	sx::vector<string> v2 = v1;
+//	for (auto e : v1)
+//	{
+//		cout << e << " ";
+//	}
+//	for (auto e : v2)
+//	{
+//		cout << e << " ";
+//	}
+//	cout << endl;
+//}
+//void test4()
+//{
+//	sx::vector<int> v1;
+//	v1.push_back(1);
+//	v1.push_back(2);
+//	v1.push_back(3);
+//	v1.push_back(2);
+//	v1.push_back(9);
+//	v1.push_back(7);
+//	sx::vector<int>::iterator it = v1.begin();
+//	while (it != v1.end())
+//	{
+//		if (*it == 2)
+//		{
+//			it = v1.insert(it, 0);
+//			++it;
+//		}
+//		++it;
+//	}
+//	for (auto e : v1)
+//	{
+//		cout << e << " ";
+//	}
+//	cout << endl;
+//}
 
-	std::vector<int> v1;
-	v1.push_back(1);
-	v1.push_back(1);
-	v1.push_back(1);
-	v1.push_back(1);
-	v1.push_back(1);
-	v1.push_back(1);
-	v1.reserve(3);
-	v1.reserve(4);
-}
-void test1()
+void test5()
 {
-	sx::vector<string> v1;
-	v1.push_back("func");
-	v1.push_back("hello");
-	v1.push_back("hello");
-	v1.push_back("hello");
-	v1.push_back("hello");
-	v1.push_back("hello");
-	v1.push_back("hello");
-	v1.push_back("hello");
-	v1.push_back("hello");
-	v1.push_back("hello");
-	sx::vector<string> v2 = v1;
+	sx::vector<int> v1(7, 1);
+	sx::vector<int> v2(v1);
+	v2.insert(v2.begin(), 6, 2);
 	for (auto e : v1)
 	{
 		cout << e << " ";
 	}
-	for (auto e : v2)
+	v1.pop_back();
+	cout << endl;
+	for (auto e : v1)
 	{
 		cout << e << " ";
 	}
 	cout << endl;
+	cout << v1.size();
+	cout << endl;
+	v1 = v2;
+	
+	for (auto e : v1)
+	{
+		cout << e << " ";
+	}
+
+	cout << endl;
+	cout << v1.size();
+	cout << endl;
 }
 int main()
 {
-	test3();
+	test5();
+	//test4();
+	//test3();
 	//test2();
 	//test1();
 	//int arr[] = { 1,2,3,4,5,5,6 };
