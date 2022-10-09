@@ -3,6 +3,83 @@
 #include<string>
 using namespace std;
 
+void test1()
+{
+	std::vector<int> v1;
+	v1.push_back(1);
+	v1.push_back(2);
+	v1.push_back(3);
+	v1.push_back(4);
+	v1.push_back(5);
+	v1.push_back(6);
+	std::vector<int>::iterator it = v1.begin();
+	while (it != v1.end())
+	{
+		if (*it % 2 == 0)
+		{
+			v1.erase(it);
+		}
+		++it;
+	}
+	for (auto e : v1)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+}
+
+void test2()
+{
+	std::vector<int> v1;
+	v1.push_back(1);
+	v1.push_back(2);
+	v1.push_back(3);
+	v1.push_back(4);
+	v1.push_back(5);
+	v1.push_back(6);
+	std::vector<int>::iterator it = v1.begin();
+	while (it != v1.end())
+	{
+		if (*it == 2)
+		{
+			it = v1.insert(it, 9);
+			++it;
+		}
+		++it;
+	}
+	for (auto e : v1)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+}
+void test_vector6()
+{
+	std::vector<int> v;
+	v.reserve(10);
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	v.push_back(4);
+	cout << v.size() << ":" << v.capacity() << endl;
+	auto pos = find(v.begin(), v.end(), 2);
+	if (pos != v.end())
+	{
+		v.erase(pos);
+		++pos;
+	}
+	cout << v.size() << ":" << v.capacity() << endl;
+	cout << *pos << endl;
+	//*pos = 10;
+	//cout << *pos << endl;
+}
+int main()
+{
+	test_vector6();
+	//test2();
+	//test1();
+	return 0;
+}
 //int count1[26];
 //class Solution
 //{
@@ -84,23 +161,23 @@ public:
 		}
 	}
 };
-void test1()
-{
-	//string s1("0");
-	//string s2("0");
-	//string ret = Solution().multiply(s1, s2);
-	//cout << ret << endl;
-	//string s;
-	//getline(cin, s);
-	//size_t pos = s.rfind(' ');
-	//cout << s.size() - pos << endl;
-}
-int main() 
-{
-
-	//test1();
-	return 0;
-}
+//void test1()
+//{
+//	string s1("0");
+//	string s2("0");
+//	string ret = Solution().multiply(s1, s2);
+//	cout << ret << endl;
+//	string s;
+//	getline(cin, s);
+//	size_t pos = s.rfind(' ');
+//	cout << s.size() - pos << endl;
+//}
+//int main() 
+//{
+//
+//	//test1();
+//	return 0;
+//}
 //class Solution 
 //{
 //public:
