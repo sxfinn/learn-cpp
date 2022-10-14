@@ -16,6 +16,8 @@
 *.sqlite
 *.enc
 *.opendb
+*.vsidx
+*.lock
 
 # Prerequisites
 *.d
