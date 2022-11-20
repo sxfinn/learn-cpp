@@ -1,7 +1,8 @@
-#include"reverse_iterator.h"
+
 #include"list.h"
 #include"vector.h"
-#include<vector>
+
+//#include<vector>
 void test_list()
 {
 	int arr[] = { 2,3,6,8,2,0,7 };
