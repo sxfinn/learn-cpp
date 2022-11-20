@@ -1,4 +1,7 @@
 # Add By Me
+*.enc
+*.ipdb
+*.iobj
 *.ipch
 *.suo
 *.db
