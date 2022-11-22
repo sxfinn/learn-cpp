@@ -13,7 +13,7 @@ template<class K, class V>
 
 struct RBTreeNode
 {
-	RBTreeNode(const pair<K, V> kv)
+	RBTreeNode(const pair<K, V>& kv)
 		:
 		_kv(kv),
 		_left(nullptr),
@@ -58,7 +58,7 @@ public:
 		std::swap(_root, tree._root);
 	}
 
-	bool Insert(const pair<K, V> kv)
+	bool Insert(const pair<K, V>& kv)
 	{
 		if (_root == nullptr)
 		{
@@ -269,8 +269,16 @@ private:
 			return nullptr;
 
 		Node* newroot = new Node(root->_kv);
-		newroot->_left = _CopyTree(root->_left);
-		newroot->_right = _CopyTree(root->_right);
+		newroot->_colr = root->_colr;
+		Node* pl = _CopyTree(root->_left);
+		newroot->_left = pl;
+		if(pl)
+			pl->_parent = newroot;
+		Node* pr = _CopyTree(root->_right);
+		newroot->_right = pr;
+		if(pr)
+			pr->_parent = newroot;
+
 		return newroot;
 	}
 

@@ -46,6 +46,7 @@ void test_rbtree3()
 	//t.InOrder();
 }
 
+
 void test_rbtree4()
 {
 	RBTree<int, int> t;
@@ -67,8 +68,31 @@ void test_rbtree5()
 	//t2 = t1;
 
 }
+
+void test_rbtree6()
+{
+	RBTree<int, int> t1;
+	for (int i = 0; i < 20; i++)
+	{
+		t1.Insert(make_pair(i, i));
+	}
+	RBTree<int, int> t2 = t1;
+	t2 = t1;
+	t1.InOrder();
+	cout << endl;
+	t2.InOrder();
+	cout << endl;
+	t1.IsBalanceTree();
+	t1.IsHeightBalance();
+	t1.IsRBTree();
+	cout << endl;
+	t2.IsBalanceTree();
+	t2.IsHeightBalance();
+	t2.IsRBTree();
+}
 int main()
 {
-	test_rbtree2();
+	//test_rbtree2();
+	test_rbtree6();
 	return 0;
 }
