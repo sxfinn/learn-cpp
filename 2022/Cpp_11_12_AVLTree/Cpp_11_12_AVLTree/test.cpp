@@ -56,10 +56,35 @@ void test_avltree3()
 	
 }
 
+void test_avltree4()
+{
+	sx::AVLTree<int, int> t1;
+	for (int i = 0; i < 20; i++)
+	{
+		t1.Insert(make_pair(i, i));
+	}
+
+	sx::AVLTree<int, int> t2 = t1;
+	t2 = t1;
+	cout << t1.IsBalanceTree();
+	cout << t1.IsBLTree();
+	cout << t1.Height();
+	cout << endl;
+	cout << t2.IsBalanceTree();
+	cout << t2.IsBLTree();
+	cout << t2.Height();
+
+	cout << endl;
+	t1.InOrder();
+	cout << endl;
+	t2.InOrder();
+}
+
 int main()
 {
-	test_avltree1();
-	test_avltree2();
+	//test_avltree1();
+	//test_avltree2();
 	//test_avltree3();
+	test_avltree4();
 	return 0;
 }

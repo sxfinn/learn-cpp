@@ -198,8 +198,15 @@ namespace sx
 				return nullptr;
 
 			Node* newroot = new Node(root->_kv);
-			newroot->_left = _CopyTree(root->_left);
-			newroot->_right = _CopyTree(root->_right);
+			newroot->_bf = root->_bf;
+			Node* pl = _CopyTree(root->_left);
+			newroot->_left = pl;
+			if (pl)
+				pl->_parent = newroot;
+			Node* pr = _CopyTree(root->_right);
+			newroot->_right = pr;
+			if (pr)
+				pr->_parent = newroot;
 			return newroot;
 		}
 
@@ -255,13 +262,13 @@ namespace sx
 			// pRoot平衡因子的绝对值超过1，则一定不是AVL树
 			if (abs(diff) >= 2)
 			{
-				cout << root->_kv.first << "节点平衡因子异常" << endl;
+				cout << root->_kv.first << "节点左右子树高度异常，不在有效范围内" << endl;
 				return false;
 			}
 
 			if (diff != root->_bf)
 			{
-				cout << root->_kv.first << "节点平衡因子不符合实际" << endl;
+				cout << root->_kv.first << "节点平衡因子实际的左右子树高度差不一致" << endl;
 				return false;
 			}
 			// pRoot的左和右如果都是AVL树，则该树一定是AVL树
