@@ -33,6 +33,14 @@ void test_shared_ptr()
 
 }
 
+template<class T>
+struct Free
+{
+	void operator()(T* ptr)
+	{
+		free(ptr);
+	}
+};
 
 void test_weak_ptr()
 {

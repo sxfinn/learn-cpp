@@ -26,7 +26,8 @@ namespace sx
 		{
 			if (_ptr)
 			{
-				delete _ptr;
+				D del;
+				del(_ptr);
 				_ptr = nullptr;
 			}
 		}
@@ -82,6 +83,9 @@ namespace sx
 
 		auto_ptr<T, D>& operator=(auto_ptr<T, D>& ap)
 		{
+			D del;
+			if (_ptr)
+				del(_ptr);
 			_ptr = ap._ptr;
 			ap._ptr = nullptr;
 			return *this;
@@ -126,7 +130,7 @@ namespace sx
 				D del;
 				del(_ptr);
 				_ptr = nullptr;
-				del(_pCount);
+				delete _pCount;
 				_pCount = nullptr;
 			}
 		}
@@ -148,7 +152,7 @@ namespace sx
 				D del;
 				del(_ptr);
 				_ptr = nullptr;
-				del(_pCount);
+				delete _pCount;
 				_pCount = nullptr;
 			}
 			_ptr = sp._ptr;
@@ -184,7 +188,7 @@ namespace sx
 
 
 
-	template<class T, class D = DefaultDelete<T>>
+	template<class T>
 	class weak_ptr
 	{
 	public:
@@ -193,12 +197,12 @@ namespace sx
 			_ptr(nullptr)
 		{}
 
-		weak_ptr(const shared_ptr<T, D>& sp)
+		weak_ptr(const shared_ptr<T>& sp)
 			:
 			_ptr(sp.get())
 		{}
 
-		weak_ptr& operator=(const shared_ptr<T, D>& sp)
+		weak_ptr& operator=(const shared_ptr<T>& sp)
 		{
 			_ptr = sp.get();
 			return *this;
