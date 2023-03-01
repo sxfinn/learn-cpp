@@ -86,7 +86,7 @@ int main()
     //}
 
     stringstream ss1;
-    ss1 << "12 23you are so pretty!";
+    ss1 << "12 232you are so pretty!";
     int n = 0;
     int m = 0;
     string str;
